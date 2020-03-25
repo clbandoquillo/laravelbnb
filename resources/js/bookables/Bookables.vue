@@ -4,13 +4,13 @@
     <div v-else>
       <div class="row mb-4" v-for="row in rows" :key="'row' + row">
         <div
-          class="col"
+          class="col d-flex align-item-stretch"
           v-for="(bookable, column) in bookablesInRow(row)"
           :key="'row' + row + column"
         >
           <bookable-list-item
             :item-title="bookable.title"
-            :item-content="bookable.content"
+            :item-description="bookable.description"
             :price="1000"
           ></bookable-list-item>
         </div>
@@ -56,43 +56,28 @@ export default {
         },*/
   created() {
     this.loading = true;
-    console.log("created");
-    console.log(this.bookable1);
-    console.log(this.bookable2);
+    //console.log("created");
+    //console.log(this.bookable1);
+    //console.log(this.bookable2);
 
-    setTimeout(() => {
-      this.bookables = [
-        {
-          title: "Cheap Villa",
-          content: "A very cheap villa"
-        },
-        {
-          title: "Cheap Villa 2",
-          content: "A very cheap villa 2"
-        },
-        {
-          title: "Cheap Villa 2",
-          content: "A very cheap villa 2"
-        },
-        {
-          title: "Cheap Villa 2",
-          content: "A very cheap villa 2"
-        },
-        {
-          title: "Cheap Villa 2",
-          content: "A very cheap villa 2"
-        },
-        {
-          title: "Cheap Villa 2",
-          content: "A very cheap villa 2"
-        },
-        {
-          title: "Cheap Villa 2",
-          content: "A very cheap villa 2"
-        }
-      ];
-      this.loading = false;
-    }, 5000);
+    const p = new Promise((resolve, reject) => {
+        console.log(resolve);
+        console.log(reject);
+        setTimeout(() => resolve("hello"), 3000);
+    })
+    .then(result => "Hello again" + result)
+    .then(result => console.log(result))
+    .catch(result => console.log(`Error ${result}`));
+    console.log(p);
+
+    const request = axios
+    .get('/api/bookables')
+    .then(response => {
+        this.bookables = response.data;
+       // this.bookables.push({title: "x", description: "x"});
+        this.loading = false;
+        });
+    //console.log(request);
   }
   /* beforeMount(){
             console.log('before mount');
