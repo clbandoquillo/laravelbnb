@@ -9,9 +9,7 @@
           :key="'row' + row + column"
         >
           <bookable-list-item
-            :item-title="bookable.title"
-            :item-description="bookable.description"
-            :price="1000"
+            v-bind="bookable"
           ></bookable-list-item>
         </div>
         <div class="col" v-for="p in placeholdersInRow(row)" :key="'placeholder' + row + p"></div>
@@ -56,40 +54,14 @@ export default {
         },*/
   created() {
     this.loading = true;
-    //console.log("created");
-    //console.log(this.bookable1);
-    //console.log(this.bookable2);
 
-    const p = new Promise((resolve, reject) => {
-        console.log(resolve);
-        console.log(reject);
-        setTimeout(() => resolve("hello"), 3000);
-    })
-    .then(result => "Hello again" + result)
-    .then(result => console.log(result))
-    .catch(result => console.log(`Error ${result}`));
-    console.log(p);
 
     const request = axios
     .get('/api/bookables')
     .then(response => {
-        this.bookables = response.data;
-       // this.bookables.push({title: "x", description: "x"});
+        this.bookables = response.data.data;
         this.loading = false;
         });
-    //console.log(request);
   }
-  /* beforeMount(){
-            console.log('before mount');
-        },*/
-  //mounted(){
-  //    console.log('mounted');
-  //},
-  /* beforeDestroy(){
-            console.log('before destroy');
-        },
-        destroyed(){
-            console.log('destroy');
-        }*/
 };
 </script>
