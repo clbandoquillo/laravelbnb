@@ -32,3 +32,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //   ->only(['index', 'show']); pwede rin except
 Route::apiResource('bookables', 'Api\BookableController');
+Route::get('bookables/{bookable}/availability', 'Api\BookableAvailabilityController')->name('bookables.availability.show');
+Route::get('bookables/{bookable}/reviews', 'Api\BookableReviewController')->name('bookables.reviews.show');
