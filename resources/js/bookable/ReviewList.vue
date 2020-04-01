@@ -13,8 +13,7 @@
                     Piotr Jura
                 </div>
                 <div class="col-md-6 d-flex justify-content-end">
-                    {{ review.rating }}
-                    <star-rating></star-rating>
+                    <star-rating :value="review.value" class="fa-lg"></star-rating>
                 </div>
             </div>
             <div class="row">
@@ -38,7 +37,7 @@
 export default {
 
     props:{
-        bookableId: String
+        bookableId: [String, Number]
     },
 
     data(){
