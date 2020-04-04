@@ -24,9 +24,9 @@ export default {
   computed: {
     halfStar() {
       const fraction = Math.round(
-        (this.rating - Math.floor(this.value)) * 100
+        (this.value - Math.floor(this.value)) * 100
       );
-      console.log(fraction);
+      //console.log(fraction);
 
       return fraction > 0 && fraction <= 50;
     },
