@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Bookable from "./bookable/Bookable.vue";
 import Bookables from "./bookables/Bookables.vue";
 import Review from "./review/Review.vue";
+import Basket from "./basket/Basket.vue";
 
 const routes = [
     {
@@ -19,6 +20,11 @@ const routes = [
         path: "/review/:id",
         component: Review,
         name: "review",
+    },
+    {
+        path: "/basket",
+        component: Basket,
+        name: "basket",
     }
 ];
 
