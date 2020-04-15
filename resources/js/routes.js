@@ -29,7 +29,7 @@ const routes = [
     {
         path: "/auth/login",
         component: require("./auth/Login.vue").default,
-        name: "basket",
+        name: "login",
     }
 ];
 
